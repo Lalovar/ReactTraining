@@ -28,9 +28,6 @@ class App extends React.Component {
     if(this.state.dasd==="Gato"){
       this.setState({dasd:"Perro"})
     }
-    this.setState({
-      dasd: "gato"
-    })
   }
 
   render() {
