@@ -1,0 +1,9 @@
+.tarjeta{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+}
+
+#titulo{
+    text-decoration: underline;
+}
