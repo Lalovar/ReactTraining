@@ -10,7 +10,8 @@ class App extends React.Component {
       arregloUsuario: [],
       textToDisplay: "Hola tesoro",
       textToDisplay2: undefined,
-      dasd: "Perro"
+      dasd: "Perro",
+      loading:false
     };
   }
 
@@ -60,16 +61,21 @@ class App extends React.Component {
     //  console.log(this.state)
   }
 
-  agregar = () => {
-    const obj = {
-      nombre: this.state.currentName,
-      puesto: this.state.currentPosition,
-      bgColor: this.state.currentbgColor
-    }
-
-    const arrOnState = this.state.arregloUsuario
-    arrOnState.push(obj)
-    this.setState({ arregloUsuario: arrOnState })
+   agregar = async () => {
+    this.setState({loading:true})
+    await setTimeout(() => {
+      const obj = {
+        nombre: this.state.currentName,
+        puesto: this.state.currentPosition,
+        bgColor: this.state.currentbgColor
+      }
+  
+      const arrOnState = this.state.arregloUsuario
+      arrOnState.push(obj)
+      this.setState({ arregloUsuario: arrOnState })
+      this.setState({loading:false})
+    }, 1000);
+    
   }
 
   render() {
@@ -99,6 +105,9 @@ class App extends React.Component {
           <p>bgColor</p>
           <input name="currentbgColor" value={this.state.currentbgColor} onChange={event => { this.handleChange(event) }} />
           <button onClick={this.agregar}> Agregar </button>
+          {
+            this.state.loading? <p>Loading...</p>:null
+          }
         </div>
         <h2>Tarjetas de usuarios </h2>{
           arrVal.map((element, index) => {
