@@ -58,7 +58,6 @@ class App extends React.Component {
       ...this.state,
       [event.target.name]: value
     })
-    //  console.log(this.state)
   }
 
    agregar = async () => {
